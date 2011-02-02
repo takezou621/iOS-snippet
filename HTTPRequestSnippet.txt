@@ -1,3 +1,4 @@
+// href属性にtarget='_blank'が記載されていた場合、スライドアップビューを表示する
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
   // target=_blankの場合はスライドアップビューで表示する
   var tags = document.getElementsByTagName('a');\
