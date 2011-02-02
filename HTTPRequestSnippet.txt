@@ -1,0 +1,16 @@
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+  // target=_blankの場合はスライドアップビューで表示する
+  var tags = document.getElementsByTagName('a');\
+     for(var i=0; i < tags.length; i++) {\
+	  var tag = tags[i];\
+	  var t = tag.getAttribute('target');\
+	  var h = tag.getAttribute('href');\
+	  if(t != null && h != null){\
+		tag.setAttribute('target', '');\
+		tag.setAttribute('href',makeSpecialURL(h));\
+	  };\
+     };\
+     function makeSpecialURL(url){return url+(url.match(/#/) ?\
+	  '_open' : '#open');}\
+     "];
+}
