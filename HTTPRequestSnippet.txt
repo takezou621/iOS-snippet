@@ -14,3 +14,22 @@
 	  '_open' : '#open');}\
      "];
 }
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+
+	// スライドアップビューで表示すべきか判別
+	NSString *absoluteURL = [[request URL] absoluteString];
+	if([absoluteURL hasSuffix:@"open"]){
+		// 行末がopenのURLはスライドアップビューで表示する
+		NSLog(@"slide up view");
+		
+		
+		ModalWebViewController *modalWebViewController = [[ModalWebViewController alloc] init];
+		modalWebViewController.urlStr = absoluteURL;
+		modalWebViewController.view.frame = CGRectMake(0, 0, 320, 400);
+		modalWebViewController.view.backgroundColor = [UIColor whiteColor];
+		[self presentModalViewController:modalWebViewController animated:YES];
+	
+		[modalWebViewController release];
+	}
+}
